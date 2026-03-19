@@ -1,0 +1,23 @@
+.characters-page section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.character-article {
+  border: 1px black solid;
+  width: 200px;
+}
+
+.character-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.character-link {
+  text-decoration: none;
+  color: inherit;
+}

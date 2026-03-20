@@ -5,8 +5,18 @@
 }
 
 .character-article {
-  border: 1px black solid;
-  width: 200px;
+  border: 1px #ffffff solid;
+  width: 250px;
+  height: 330px;
+  position: relative;
+  background-color: white;
+  p {
+    color: black;
+  }
+}
+
+.picture-favicon {
+  position: relative;
 }
 
 .character-info {

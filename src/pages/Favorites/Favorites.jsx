@@ -1,5 +1,6 @@
 import "./Favorites.css";
 import { useEffect, useState } from "react";
+import { BsFillLightningFill } from "react-icons/bs";
 
 const Favorites = () => {
   // states pour stocker les favoris
@@ -65,7 +66,15 @@ const Favorites = () => {
                       src={`${character.thumbnail.path}/portrait_xlarge.${character.thumbnail.extension}`}
                       alt={character.name}
                     />
-                    <h3>{character.name}</h3>
+                    <h3>
+                      {character.name}{" "}
+                      {/* <BsFillLightningFill
+                        className="added-to-fav"
+                        onClick={() => {
+                          className = "lightning";
+                        }}
+                      />{" "} */}
+                    </h3>
                     {character.description && <p>{character.description}</p>}
                   </article>
                 );
@@ -86,7 +95,15 @@ const Favorites = () => {
                       src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
                       alt={comic.title}
                     />
-                    <h3>{comic.title}</h3>
+                    <h3>
+                      {comic.title}{" "}
+                      {/* <BsFillLightningFill
+                        className="added-to-fav"
+                        onClick={() => {
+                          className = "lightning";
+                        }}
+                      />{" "} */}
+                    </h3>
                     {comic.description && <p>{comic.description}</p>}
                   </article>
                 );

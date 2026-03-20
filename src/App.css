@@ -1,6 +1,58 @@
-/* importer police et la rajouter dans le body  */
-/* mettre un contener */
+/* Importation de police*/
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-/* body {
-    margin auto 
-} */
+/* GLOBALS------------------- */
+body {
+  font-family: "Raleway";
+  font-weight: light;
+  color: #ffffff;
+  background-color: #000000;
+  font-size: 12px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* titles------------------- */
+h1 {
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 24px;
+  margin: 30px 0;
+}
+
+h2 {
+  font-weight: bold;
+  color: #e62429;
+  font-size: 14px;
+}
+
+h3 {
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 1px;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+}
+
+/* faorites------------------- */
+.lightning {
+  color: #e62429;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 2;
+  background-color: black;
+}
+
+.added-to-fav {
+  background-color: #e62429;
+}

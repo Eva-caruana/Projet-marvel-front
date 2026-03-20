@@ -2,6 +2,7 @@ import "./CharacterComics.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BsFillLightningFill } from "react-icons/bs";
 
 const CharacterComics = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const CharacterComics = () => {
       try {
         const response = await axios.get(`http://localhost:3000/comics/${id}`);
 
-        console.log("ici le logggg=>", response.data);
+        // console.log("ici le logggg=>", response.data);
         setData(response.data);
         setLoading(false);
       } catch (error) {
@@ -52,7 +53,15 @@ const CharacterComics = () => {
                     alt={comic.title}
                   />
                   <div className="comic-info">
-                    <h2>{comic.title}</h2>
+                    <h2>
+                      {comic.title}{" "}
+                      {/* <BsFillLightningFill
+                        className="lightning"
+                        onClick={() => {
+                          className = "added-to-fav";
+                        }}
+                      />{" "} */}
+                    </h2>
 
                     {/*gerer erreur description*/}
                     {/* Gerer longeur description */}

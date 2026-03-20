@@ -1,19 +1,26 @@
 import "./Comics.css";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BsFillLightningFill } from "react-icons/bs";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const Comics = () => {
+const Comics = ({ title, setTitle }) => {
   //on declare des states
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  //On met la fonction dans une variable
-
+  const [page, setPage] = useState(1);
   //Use effect pour eviter que la requette tourne en boucle
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/comics/`);
+        let filter = "?limit=100&page" + page;
+        if (title) {
+          filter += "?title=" + title;
+        }
+
+        const response = await axios.get(
+          `http://localhost:3000/comics/` + filter,
+        );
         // console.log("ici le log =>>>", response.data.results);
         setData(response.data);
         setLoading(false);
@@ -23,7 +30,7 @@ const Comics = () => {
     };
 
     fetchData();
-  }, []);
+  }, [title, page]);
 
   return loading ? (
     <div>Loading...</div>
@@ -42,14 +49,49 @@ const Comics = () => {
                   alt={comic.name}
                 />
                 <div className="comic-info">
-                  <h2>{comic.title}</h2>
+                  <h2>
+                    {comic.title}{" "}
+                    {/* <BsFillLightningFill
+                      className="lightning"
+                      onClick={() => {
+                        className = "added-to-fav";
+                      }}
+                    />{" "} */}
+                  </h2>
                   {/*gerer erreur description*/}
-                  {comic.description && <p>{comic.description}</p>}
+                  {comic.description && (
+                    <p>{comic.description.slice(0, 100) + "..."}</p>
+                  )}
                 </div>
               </article>
             );
           })}
         </section>
+        <div className="pagination">
+          <div className="prev-button">
+            <button
+              onClick={() => {
+                setPage(page - 1);
+              }}
+              disabled={page === 1}
+            >
+              Precedent
+            </button>
+          </div>
+          <div>
+            <span> {page}</span>
+          </div>
+          <div className="next-button">
+            <button
+              onClick={() => {
+                setPage(page + 1);
+              }}
+              disabled={page === 15}
+            >
+              Suivant
+            </button>
+          </div>
+        </div>
       </div>
     </main>
   );

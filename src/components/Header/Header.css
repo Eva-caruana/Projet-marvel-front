@@ -1,16 +1,37 @@
-header img {
-  height: 60px;
-}
-
 header {
-  border-bottom: lightgray 1px solid;
+  height: 80px;
+  margin-bottom: 50px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   gap: 30px;
+}
+
+header img {
+  height: 60px;
 }
 
 header .menu {
   gap: 30px;
   display: flex;
+}
+
+header span {
+  text-decoration: none;
+  color: inherit;
+  color: white;
+}
+
+.left-side-header {
+}
+
+.left-side-header {
+}
+.search-input {
+  background-color: black;
+  border: none;
+  border-bottom: 0.5px solid lightgray;
+  color: white;
+  outline: none;
+  width: 50px;
 }

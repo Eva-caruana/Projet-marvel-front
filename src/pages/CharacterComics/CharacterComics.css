@@ -1,0 +1,18 @@
+.characters-comics-page section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.comic-article {
+  border: 1px black solid;
+  width: 200px;
+}
+
+.comic-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}

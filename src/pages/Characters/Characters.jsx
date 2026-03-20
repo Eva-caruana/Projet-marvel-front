@@ -15,7 +15,7 @@ const Characters = () => {
       try {
         const response = await axios.get(`http://localhost:3000/characters/`);
         // console.log("ici le log =>>>", response.data.results);
-        setData(response.data.results);
+        setData(response.data);
         setLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -32,7 +32,7 @@ const Characters = () => {
       <div className="container">
         <h1>Personnages</h1>
         <section>
-          {data.map((character) => {
+          {data.results.map((character) => {
             return (
               //   console.log("ici le log =>>>", data.results);
 
@@ -47,8 +47,7 @@ const Characters = () => {
                   />
                   <div className="character-info">
                     <h2>{character.name}</h2>
-                    {/*gerer erreur description*/}
-                    <p>{character.description}</p>
+                    {character.description && <p>{character.description}</p>}
                   </div>
                 </article>
               </Link>

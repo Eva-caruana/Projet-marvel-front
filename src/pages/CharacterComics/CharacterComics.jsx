@@ -17,8 +17,8 @@ const CharacterComics = () => {
       try {
         const response = await axios.get(`http://localhost:3000/comics/${id}`);
 
-        console.log("ici le logggg=>", response.data.results);
-        setData(response.data.results);
+        console.log("ici le logggg=>", response.data);
+        setData(response.data);
         setLoading(false);
       } catch (error) {
         console.log(error.response);
@@ -26,34 +26,42 @@ const CharacterComics = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return loading ? (
     <div>Loading...</div>
   ) : (
     <main className="characters-comics-page">
       <div className="container">
-        <h1>{`${character.name}`} comics</h1>
+        {/* ICI ADAPTER LE NOM DU PERSONNAGE ?*/}
+        <h1>Comics du personnage</h1>
         <section>
-          {data.map((comic) => {
-            return (
-              //   console.log("ici le log =>>>", data.results);
+          {/* Si le personnage n'a pas de comics retourner un message d'erreur  */}
+          {data.length === 0 ? (
+            <div className="empty-library">
+              <p>Aucun comics displonible pour ce personnage</p>{" "}
+            </div>
+          ) : (
+            data.comics.map((comic) => {
+              return (
+                <article className="comic-article" key={comic._id}>
+                  {/* //si l'article n'a pas d'image on ne l'affiche pas . ????? */}
+                  <img
+                    className="comic-img"
+                    src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
+                    alt={comic.title}
+                  />
+                  <div className="comic-info">
+                    <h2>{comic.title}</h2>
 
-              <article className="comic-article" key={character._id}>
-                {/* //si l'article n'a pas d'image on ne l'affiche pas . ????? */}
-                <img
-                  className="comic-img"
-                  src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
-                  alt={comic.name}
-                />
-                <div className="comic-info">
-                  <h2>{comic.name}</h2>
-                  {/*gerer erreur description*/}
-                  <p>{comic.description}</p>
-                </div>
-              </article>
-            );
-          })}
+                    {/*gerer erreur description*/}
+                    {/* Gerer longeur description */}
+                    {comic.description && <p>{comic.description}</p>}
+                  </div>
+                </article>
+              );
+            })
+          )}
         </section>
       </div>
     </main>

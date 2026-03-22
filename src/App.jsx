@@ -1,5 +1,5 @@
 import "./App.css";
-// import { useState } from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -11,34 +11,29 @@ import CharacterComics from "./pages/CharacterComics/CharacterComics";
 import Favorites from "./pages/Favorites/Favorites";
 
 function App() {
-  const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
   const [title, setTitle] = useState("");
-  const [favoriteCharacters, setFavoriteCharacters] = useState([]);
-  const [favoriteComics, setFavoriteComics] = useState([]);
 
-  useEffect(() => {
-    //GESTION DES FAVORIS
-    // Récuperation des personnages favoris et comics dans le localStorage
+  //GESTION DES FAVORIS
+  // lire le localStorage directement au moment où le state est créé
+
+  const [favoriteCharacters, setFavoriteCharacters] = useState(() => {
     try {
-      //si rien n’existe on met un tableau vide
-      const storedCharacters =
-        JSON.parse(localStorage.getItem("favoriteCharacters")) || [];
-      const storedComics =
-        JSON.parse(localStorage.getItem("favoriteComics")) || [];
-
-      //on stocke les favoris dans les states
-      setFavoriteCharacters(storedCharacters);
-      setFavoriteComics(storedComics);
-      setLoading(false);
-    } catch (error) {
-      console.log("Erreur lors du chargement des favoris :", error);
-      // Si erreur renvoie des tableaux vides
-      setFavoriteCharacters([]);
-      setFavoriteComics([]);
-      setLoading(false);
+      return JSON.parse(localStorage.getItem("favoriteCharacters")) || [];
+    } catch {
+      return [];
     }
-  }, []);
+  });
+
+  const [favoriteComics, setFavoriteComics] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("favoriteComics")) || [];
+    } catch {
+      return [];
+    }
+  });
+
+  // useEffect uniquement pour sauvegarder
   //Transofmer les données reçues en  chaines de caracteres avant stockage
   useEffect(() => {
     localStorage.setItem(
@@ -93,9 +88,7 @@ function App() {
       setFavoriteComics([...favoriteComics, comic]);
     }
   };
-  return loading ? (
-    <span>Loading... </span>
-  ) : (
+  return (
     <>
       <Router>
         <Header
@@ -145,6 +138,8 @@ function App() {
               <Favorites
                 favoriteCharacters={favoriteCharacters}
                 favoriteComics={favoriteComics}
+                toggleFavoriteCharacter={toggleFavoriteCharacter}
+                toggleFavoriteComic={toggleFavoriteComic}
               />
             }
           />

@@ -51,7 +51,7 @@ const Comics = ({ title, setTitle, favoriteComics, toggleFavoriteComic }) => {
                   <img
                     className="comic-img"
                     src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
-                    alt={comic.name}
+                    alt={comic.title}
                   />
 
                   {/* bouton favoris */}
@@ -72,10 +72,10 @@ const Comics = ({ title, setTitle, favoriteComics, toggleFavoriteComic }) => {
                   </div>
                 </div>
                 <div className="comic-info">
-                  <h2>{comic.title}</h2>
+                  <h2> {comic.title.slice(0, 20) + "..."}</h2>
                   {/*gerer erreur description*/}
                   {comic.description && (
-                    <p className="description">
+                    <p className="comics-description">
                       {comic.description.slice(0, 80) + "..."}
                     </p>
                   )}

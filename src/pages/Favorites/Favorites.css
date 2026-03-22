@@ -7,9 +7,8 @@ h1 {
 
 .favorites-page h2 {
   font-weight: bold;
-  color: white;
+  color: #e62429;
   font-size: 24px;
-
   margin: 20px 0;
 }
 
@@ -31,7 +30,10 @@ h3 {
 .favorites-bloc {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: flex-start;
   gap: 30px;
+  margin: 0;
+  min-width: 1200px;
 }
 
 .favorites-bloc h1 .empty-library p {
@@ -41,10 +43,15 @@ h3 {
 .favorites-characters-section {
   display: flex;
   flex-direction: column;
+
+  margin: 20px 0;
 }
 .favorites-comics-section {
   display: flex;
   flex-direction: column;
+  margin: 10px 0;
+
+  margin: 20px 0;
 }
 
 .favorites-bloc {

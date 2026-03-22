@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* GLOBALS------------------- */
+
+.loading {
+  color: white;
+}
 body {
   font-family: "Raleway";
   font-weight: light;
@@ -20,15 +24,15 @@ h1 {
   font-weight: bold;
   color: #e62429;
   font-size: 24px;
-  margin: 30px 0;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 h2 {
   font-weight: bold;
   color: white;
   font-size: 16px;
-
-  margin-top: 10px;
+  padding-bottom: 10px;
 }
 
 h3 {
@@ -62,8 +66,8 @@ section {
   align-items: center;
   border-radius: 50%;
   position: absolute;
-  top: 10px;
-  right: 15px;
+  top: -5px;
+  right: -5px;
   cursor: pointer;
   z-index: 2;
   position: absolute;
@@ -79,7 +83,7 @@ section {
 .pagination {
   color: white;
   font-size: 16px;
-  margin: 40px;
+  padding: 60px 0;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -76,11 +76,13 @@ const CharacterComics = ({ favoriteComics, toggleFavoriteComic }) => {
                     </div>
                   </div>
                   <div className="comic-info">
-                    <h2>{comic.title} </h2>
+                    <h2>{comic.title.slice(0, 20) + "..."}</h2>
 
                     {/* Gerer longeur description */}
                     {comic.description && (
-                      <p>{comic.description.slice(0, 40) + "..."}</p>
+                      <p className="comics-description">
+                        {comic.description.slice(0, 40) + "..."}
+                      </p>
                     )}
                   </div>
                 </article>

@@ -1,8 +1,6 @@
 import "./App.css";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Characters from "./pages/Characters/Characters";
@@ -47,7 +45,7 @@ function App() {
   }, [favoriteComics]);
 
   // ===> Personnages
-  //utilisation d'une fonction toggle pour alterner les etats entre chaque appel de la fontion (appui bouton)
+  //Pour alterner les etats entre chaque appel de la fontion (appui bouton)
   const toggleFavoriteCharacter = (character) => {
     // On vérifie si le personnage est déjà dans les favoris avec find
     const isAlreadyFavorite = favoriteCharacters.find(

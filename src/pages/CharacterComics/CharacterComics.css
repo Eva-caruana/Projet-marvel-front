@@ -1,9 +1,11 @@
 .characters-comics-page section {
   display: flex;
+  margin-bottom: 60px;
   flex-wrap: wrap;
   gap: 30px;
 }
 
 .empty-library {
   color: white;
+  background-color: aqua;
 }

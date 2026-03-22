@@ -1,10 +1,12 @@
 import "./Home.css";
-import picture from "../../assets/img/marvel-home.jpg";
+import picture from "../../assets/img/marvel-homee.jpg";
 
 const Home = () => {
   return (
     <main className="home-section">
-      <img src={picture} alt="hero picture" />
+      <div>
+        <img className="home-img" src={picture} alt="hero picture" />
+      </div>
     </main>
   );
 };

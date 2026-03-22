@@ -26,7 +26,8 @@ const Characters = ({
         }
 
         const response = await axios.get(
-          `http://localhost:3000/characters/` + filter,
+          "https://site--projet-marvel-backend--9hvs4qlf9c87.code.run/characters" +
+            filter,
         );
 
         // console.log("ici le log =>>>", response.data.count);

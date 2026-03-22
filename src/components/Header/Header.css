@@ -1,3 +1,12 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  z-index: 1000;
+}
+
 .header-sections {
   display: flex;
   justify-content: space-between;
@@ -5,23 +14,24 @@
   padding: 20px 0;
   border-bottom: #e62429 0.5px solid;
   height: 100px;
+  background-color: black;
 }
 /* LEFT SIDE  */
 header img {
-  height: 40px;
+  width: 150px;
 }
 
 .left-side-header {
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 60px;
 }
 /* MIDDLE MENU */
 header .menu {
   display: flex;
   align-items: flex-end;
-  font-size: 18px;
-  gap: 15px;
+  font-size: 17px;
+  gap: 70px;
 }
 
 header .menu span {
@@ -46,7 +56,7 @@ header .menu a {
   border-bottom: 0.5px solid lightgray;
   color: white;
   outline: none;
-  width: 70px;
+  width: 100px;
 }
 
 .search-icon {

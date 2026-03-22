@@ -1,3 +1,4 @@
+/* Page globals------------------- */
 h1 {
   font-weight: bold;
   color: #e62429;
@@ -19,6 +20,7 @@ h2 {
   gap: 30px;
 }
 
+/* articles------------------- */
 .character-article {
   border: 0.5px #ffffff solid;
   width: 250px;

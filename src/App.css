@@ -9,9 +9,9 @@
 body {
   font-family: "Raleway";
   font-weight: light;
-
   background-color: #000000;
   font-size: 12px;
+  padding-top: 100px;
 }
 
 .container {
@@ -42,6 +42,7 @@ h3 {
   font-size: 16px;
 }
 
+/* blocs------------------- */
 section {
   display: flex;
   justify-content: center;
@@ -80,6 +81,7 @@ section {
   color: #e62429;
 }
 
+/* pages------------------- */
 .pagination {
   color: white;
   font-size: 16px;

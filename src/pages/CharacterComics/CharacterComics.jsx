@@ -16,7 +16,9 @@ const CharacterComics = ({ favoriteComics, toggleFavoriteComic }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/comics/${id}`);
+        const response = await axios.get(
+          `http://site--projet-marvel-backend--9hvs4qlf9c87.code.run/comics/${id}`,
+        );
 
         // console.log("ici le logggg=>", response.data);
         setData(response.data);
@@ -36,6 +38,7 @@ const CharacterComics = ({ favoriteComics, toggleFavoriteComic }) => {
       <div className="container">
         {/* ICI ADAPTER LE NOM DU PERSONNAGE ?*/}
         <h1>Comics du personnage</h1>
+
         <section>
           {/* Si le personnage n'a pas de comics retourner un message d'erreur  */}
           {data.length === 0 ? (

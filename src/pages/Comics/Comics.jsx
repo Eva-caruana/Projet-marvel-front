@@ -2,8 +2,8 @@ import "./Comics.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { IoHeart } from "react-icons/io5";
-
-const Comics = ({ title, setTitle, favoriteComics, toggleFavoriteComic }) => {
+// import img from "../../assets/img/img-notfound.jpg";
+const Comics = ({ title, favoriteComics, toggleFavoriteComic }) => {
   //on declare des states
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,8 @@ const Comics = ({ title, setTitle, favoriteComics, toggleFavoriteComic }) => {
         }
 
         const response = await axios.get(
-          `http://localhost:3000/comics/` + filter,
+          "https://site--projet-marvel-backend--9hvs4qlf9c87.code.run/comics" +
+            filter,
         );
         // console.log("ici le log =>>>", response.data.results);
         setData(response.data);

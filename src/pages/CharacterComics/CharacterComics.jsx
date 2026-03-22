@@ -2,9 +2,9 @@ import "./CharacterComics.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BsFillLightningFill } from "react-icons/bs";
+import { IoHeart } from "react-icons/io5";
 
-const CharacterComics = () => {
+const CharacterComics = ({ favoriteComics, toggleFavoriteComic }) => {
   const { id } = useParams();
 
   //on declare des states
@@ -44,28 +44,44 @@ const CharacterComics = () => {
             </div>
           ) : (
             data.comics.map((comic) => {
+              //verifier si le comic est deja en favori pour gerer l'affichage
+              const isFavorite = favoriteComics.find(
+                (item) => item._id === comic._id,
+                // console.log(comic),
+              );
               return (
                 <article className="comic-article" key={comic._id}>
-                  {/* //si l'article n'a pas d'image on ne l'affiche pas . ????? */}
-                  <img
-                    className="comic-img"
-                    src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
-                    alt={comic.title}
-                  />
-                  <div className="comic-info">
-                    <h2>
-                      {comic.title}{" "}
-                      {/* <BsFillLightningFill
-                        className="lightning"
-                        onClick={() => {
-                          className = "added-to-fav";
-                        }}
-                      />{" "} */}
-                    </h2>
+                  <div className="picture-heart-btn">
+                    <img
+                      className="comic-img"
+                      src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
+                      alt={comic.title}
+                    />
 
-                    {/*gerer erreur description*/}
+                    {/* bouton favoris */}
+                    <div className="favorites-heart">
+                      <IoHeart
+                        className={
+                          isFavorite ? "heart-icon-active" : "heart-icon"
+                        }
+                        onClick={(event) => {
+                          event.preventDefault();
+                          //Eviter de rediriger la page qd on clique sur le coeur a cause du link
+                          event.stopPropagation();
+                          //ajoute ou retire un comic des favoris
+                          toggleFavoriteComic(comic);
+                          console.log("ajout favori");
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div className="comic-info">
+                    <h2>{comic.title} </h2>
+
                     {/* Gerer longeur description */}
-                    {comic.description && <p>{comic.description}</p>}
+                    {comic.description && (
+                      <p>{comic.description.slice(0, 40) + "..."}</p>
+                    )}
                   </div>
                 </article>
               );

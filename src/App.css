@@ -5,7 +5,7 @@
 body {
   font-family: "Raleway";
   font-weight: light;
-  color: #ffffff;
+
   background-color: #000000;
   font-size: 12px;
 }
@@ -18,41 +18,78 @@ body {
 /* titles------------------- */
 h1 {
   font-weight: bold;
-  color: #ffffff;
+  color: #e62429;
   font-size: 24px;
   margin: 30px 0;
 }
 
 h2 {
   font-weight: bold;
-  color: #e62429;
-  font-size: 14px;
+  color: white;
+  font-size: 16px;
+
+  margin-top: 10px;
 }
 
 h3 {
   font-weight: bold;
-  color: #ffffff;
-  font-size: 1px;
+  color: #e62429;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 section {
   display: flex;
   justify-content: center;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
-/* faorites------------------- */
-.lightning {
-  color: #e62429;
+/* faorites btn------------------- */
+
+.picture-heart-btn {
+  position: relative;
+}
+.favorites-heart {
+  background-color: black;
   height: 30px;
   width: 30px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 15px;
   cursor: pointer;
   z-index: 2;
-  background-color: black;
+  position: absolute;
+}
+.heart-icon {
+  color: white;
 }
 
-.added-to-fav {
-  background-color: #e62429;
+.heart-icon-active {
+  color: #e62429;
+}
+
+.pagination {
+  color: white;
+  font-size: 16px;
+  margin: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.pagination button {
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
 }

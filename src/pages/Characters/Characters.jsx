@@ -2,10 +2,15 @@ import "./Characters.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BsLightning } from "react-icons/bs";
-import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const Characters = ({ name, setName }) => {
+import { IoHeart } from "react-icons/io5";
+
+const Characters = ({
+  name,
+  setName,
+  favoriteCharacters,
+  toggleFavoriteCharacter,
+}) => {
   //on declare des states
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -17,13 +22,14 @@ const Characters = ({ name, setName }) => {
       try {
         let filter = "?limit=100&page=" + page;
         if (name) {
-          filter += "?name=" + name;
+          filter += "&name=" + name;
         }
 
         const response = await axios.get(
           `http://localhost:3000/characters/` + filter,
         );
-        // console.log("ici le log =>>>", response.data.results);
+
+        // console.log("ici le log =>>>", response.data.count);
         setData(response.data);
         setLoading(false);
       } catch (error) {
@@ -34,31 +40,7 @@ const Characters = ({ name, setName }) => {
     fetchData();
   }, [name, page]);
 
-  // // -----SAUVEGARDER EN FAVORIS
-  // //lire les favoris deja enregistrés en local storage
-
-  // const addCharactersToFavorites = (characters) => {
-  //   const storedCharacters = localStorage.getItem("favoriteCharacters");
-  //   //transformer en tableau, si le stockage contient des favoris on recupere le tableau sinon tableau vide
-  //   const parsedCharacters = JSON.parse(storedCharacters) || [];
-  //   // verifier si le personnage existe deja
-  //   const alreadyExists = parsedCharacters.find((item) => {
-  //     //si pas de personnage = undefined
-  //     return item._id === character._id;
-  //   });
-
-  //   //sinon on l'ajoute
-  //   if (!alreadyExists) {
-  //     parsedCharacters.push(character);
-
-  //     localStorage.setItem(
-  //       "favoriteCharacters",
-  //       JSON.stringify(parsedCharacters),
-  //     );
-  //   }
-  // };
-
-  // // sauvegarder dans le local storage
+  //on calcule pour la pagination le nombre de pages totales a afficher on arrondi au dessus
 
   return loading ? (
     <div>Loading...</div>
@@ -68,39 +50,55 @@ const Characters = ({ name, setName }) => {
         <div className="search-section">
           <h1>Personnages</h1>
         </div>
+
         <section>
           {data.results.map((character) => {
+            //verifier si le personnage est deja en favori pour gerer l'affichage
+            const isFavorite = favoriteCharacters.find(
+              (item) => item._id === character._id,
+            );
+
             return (
               //   console.log("ici le log =>>>", data.results);
-
               //on redirige la page au clics sur les comics du personnage
+
               <Link
                 className="character-link"
                 to={`/comics/${character._id}`}
                 key={character._id}
               >
                 <article className="character-article">
-                  <div className="picture-favicon">
+                  <div className="picture-heart-btn">
                     <img
                       className="character-img"
                       src={`${character.thumbnail.path}/portrait_fantastic.${character.thumbnail.extension}`}
                       alt={character.name}
                     />
-                    <BsLightning
-                      className="lightning"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        //Eviter de rediriger la page qd on clique sur le coeur a cause du link
-                        event.stopPropagation();
-                        console.log("ajout favori");
-                      }}
-                    />
+                    <div className="favorites-heart">
+                      <IoHeart
+                        className={
+                          isFavorite ? "heart-icon-active" : "heart-icon"
+                        }
+                        onClick={(event) => {
+                          event.preventDefault();
+                          //Eviter de rediriger la page qd on clique sur le coeur a cause du link
+                          event.stopPropagation();
+                          //ajoute ou retire un personnage des favoris
+                          toggleFavoriteCharacter(character);
+                          console.log("ajout favori");
+                        }}
+                      />
+                    </div>
                   </div>
                   <div className="character-info">
-                    <h2>{character.name}</h2>
-                    {character.description && (
-                      <p>{character.description.slice(0, 100) + "..."}</p>
-                    )}
+                    <div className="name">
+                      <h2>{character.name}</h2>
+                    </div>
+                    <div className="characters-description">
+                      {character.description && (
+                        <p>{character.description.slice(0, 100) + "..."}</p>
+                      )}
+                    </div>
                   </div>
                 </article>
               </Link>
@@ -119,14 +117,17 @@ const Characters = ({ name, setName }) => {
             </button>
           </div>
           <div>
-            <span> {page}</span>
+            <span>
+              {/* page sur le nombre total de pages arrondi au dessus */}
+              {page} sur {Math.ceil(data.count / 100)}
+            </span>
           </div>
           <div className="next-button">
             <button
               onClick={() => {
                 setPage(page + 1);
               }}
-              disabled={page === 15}
+              disabled={page === Math.ceil(data.count / 100)}
             >
               Suivant
             </button>

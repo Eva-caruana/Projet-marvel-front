@@ -1,21 +1,21 @@
 import "./Comics.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BsFillLightningFill } from "react-icons/bs";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { IoHeart } from "react-icons/io5";
 
-const Comics = ({ title, setTitle }) => {
+const Comics = ({ title, setTitle, favoriteComics, toggleFavoriteComic }) => {
   //on declare des states
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+
   //Use effect pour eviter que la requette tourne en boucle
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let filter = "?limit=100&page" + page;
+        let filter = "?limit=100&page=" + page;
         if (title) {
-          filter += "?title=" + title;
+          filter += "&title=" + title;
         }
 
         const response = await axios.get(
@@ -40,27 +40,44 @@ const Comics = ({ title, setTitle }) => {
         <h1>Comics</h1>
         <section>
           {data.results.map((comic) => {
+            //verifier si le comic est deja en favori pour gerer l'affichage
+            const isFavorite = favoriteComics.find(
+              (item) => item._id === comic._id,
+              // console.log(comic),
+            );
             return (
               <article className="comic-article" key={comic._id}>
-                {/* //si l'article n'a pas d'image on ne l'affiche pas . ????? */}
-                <img
-                  className="comic-img"
-                  src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
-                  alt={comic.name}
-                />
-                <div className="comic-info">
-                  <h2>
-                    {comic.title}{" "}
-                    {/* <BsFillLightningFill
-                      className="lightning"
-                      onClick={() => {
-                        className = "added-to-fav";
+                <div className="picture-heart-btn">
+                  <img
+                    className="comic-img"
+                    src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
+                    alt={comic.name}
+                  />
+
+                  {/* bouton favoris */}
+                  <div className="favorites-heart">
+                    <IoHeart
+                      className={
+                        isFavorite ? "heart-icon-active" : "heart-icon"
+                      }
+                      onClick={(event) => {
+                        event.preventDefault();
+                        //Eviter de rediriger la page qd on clique sur le coeur a cause du link
+                        event.stopPropagation();
+                        //ajoute ou retire un comic des favoris
+                        toggleFavoriteComic(comic);
+                        console.log("ajout favori");
                       }}
-                    />{" "} */}
-                  </h2>
+                    />
+                  </div>
+                </div>
+                <div className="comic-info">
+                  <h2>{comic.title}</h2>
                   {/*gerer erreur description*/}
                   {comic.description && (
-                    <p>{comic.description.slice(0, 100) + "..."}</p>
+                    <p className="description">
+                      {comic.description.slice(0, 80) + "..."}
+                    </p>
                   )}
                 </div>
               </article>
@@ -79,14 +96,16 @@ const Comics = ({ title, setTitle }) => {
             </button>
           </div>
           <div>
-            <span> {page}</span>
+            <span>
+              {page} sur {Math.ceil(data.count / 100)}
+            </span>
           </div>
           <div className="next-button">
             <button
               onClick={() => {
                 setPage(page + 1);
               }}
-              disabled={page === 15}
+              disabled={page === Math.ceil(data.count / 100)}
             >
               Suivant
             </button>

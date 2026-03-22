@@ -3,3 +3,36 @@
   flex-wrap: wrap;
   gap: 30px;
 }
+
+.comic-article {
+  border: 0.5px #ffffff solid;
+  width: 250px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 20px;
+  padding: 20px;
+}
+.comic-img {
+  height: 225px;
+  width: 180px;
+  border-radius: 5px;
+  object-fit: contain;
+}
+
+.comic-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+
+  .comics-description {
+    color: white;
+    text-align: justify;
+  }
+}

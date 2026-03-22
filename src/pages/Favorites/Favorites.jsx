@@ -1,44 +1,10 @@
 import "./Favorites.css";
-import { useEffect, useState } from "react";
-import { BsFillLightningFill } from "react-icons/bs";
 
-const Favorites = () => {
-  // states pour stocker les favoris
-  const [favoriteCharacters, setFavoriteCharacters] = useState([]);
-  const [favoriteComics, setFavoriteComics] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    //Utilisation du localStorage (pas de données sensibles/garder + longtemps) pour sauvegarder les favoris utilisateurs
-    try {
-      // On récupère les personnages favoris dans le localStorage
-      //si rien n’existe on met un tableau vide
-
-      const storedCharacters =
-        JSON.parse(localStorage.getItem("favoriteCharacters")) || [];
-
-      const storedComics =
-        JSON.parse(localStorage.getItem("favoriteComics")) || [];
-
-      // On met les données dans les states
-      setFavoriteCharacters(storedCharacters);
-      setFavoriteComics(storedComics);
-      setLoading(false);
-    } catch (error) {
-      console.log("Erreur lors de la lecture des favoris :", error);
-      setFavoriteCharacters([]);
-      setFavoriteComics([]);
-      setLoading(false);
-    }
-  }, []);
-
-  if (loading) {
-    return <p>Chargement...</p>;
-  }
+const Favorites = ({ favoriteCharacters, favoriteComics }) => {
   // Si aucun favori (ni personnage ni comic)
   if (favoriteCharacters.length === 0 && favoriteComics.length === 0) {
     return (
-      <main className="favorites-page">
+      <main className="empty-favorites-page">
         <div className="container">
           <h1>Mes favoris</h1>
           <p>Aucun favori enregistré pour le moment.</p>
@@ -50,12 +16,16 @@ const Favorites = () => {
   return (
     <main className="favorites-page">
       <div className="container">
-        <h1>Mes favoris</h1>
+        <div>
+          <h1>Mes favoris</h1>
+        </div>
 
         {/* Si pas de personnage favori ne paas afficher la section*/}
         {favoriteCharacters.length > 0 && (
           <section className="favorites-characters-section">
-            <h2>Personnages favoris</h2>
+            <div>
+              <h2>Personnages favoris</h2>
+            </div>
 
             <div className="favorites-bloc">
               {favoriteCharacters.map((character) => {
@@ -66,16 +36,12 @@ const Favorites = () => {
                       src={`${character.thumbnail.path}/portrait_xlarge.${character.thumbnail.extension}`}
                       alt={character.name}
                     />
-                    <h3>
-                      {character.name}{" "}
-                      {/* <BsFillLightningFill
-                        className="added-to-fav"
-                        onClick={() => {
-                          className = "lightning";
-                        }}
-                      />{" "} */}
-                    </h3>
-                    {character.description && <p>{character.description}</p>}
+                    <h3>{character.name}</h3>
+                    {character.description && (
+                      <p className="favorites-description">
+                        {character.description.slice(0, 80)}
+                      </p>
+                    )}
                   </article>
                 );
               })}
@@ -95,16 +61,12 @@ const Favorites = () => {
                       src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
                       alt={comic.title}
                     />
-                    <h3>
-                      {comic.title}{" "}
-                      {/* <BsFillLightningFill
-                        className="added-to-fav"
-                        onClick={() => {
-                          className = "lightning";
-                        }}
-                      />{" "} */}
-                    </h3>
-                    {comic.description && <p>{comic.description}</p>}
+                    <h3>{comic.title}</h3>
+                    {comic.description && (
+                      <p className="favorites-description">
+                        {comic.description.slice(0, 80)}
+                      </p>
+                    )}
                   </article>
                 );
               })}

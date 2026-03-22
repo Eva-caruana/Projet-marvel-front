@@ -17,7 +17,7 @@ const CharacterComics = ({ favoriteComics, toggleFavoriteComic }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://site--projet-marvel-backend--9hvs4qlf9c87.code.run/comics/${id}`,
+          `https://site--projet-marvel-backend--9hvs4qlf9c87.code.run/comics/${id}`,
         );
 
         // console.log("ici le logggg=>", response.data);
@@ -25,6 +25,7 @@ const CharacterComics = ({ favoriteComics, toggleFavoriteComic }) => {
         setLoading(false);
       } catch (error) {
         console.log(error.response);
+        setLoading(false);
       }
     };
 
@@ -41,7 +42,7 @@ const CharacterComics = ({ favoriteComics, toggleFavoriteComic }) => {
 
         <section>
           {/* Si le personnage n'a pas de comics retourner un message d'erreur  */}
-          {data.length === 0 ? (
+          {data.comics.length === 0 ? (
             <div className="empty-library">
               <p>Aucun comics displonible pour ce personnage</p>{" "}
             </div>

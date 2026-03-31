@@ -53,15 +53,14 @@ git clone https://github.com/Eva-caruana/Projet-marvel-front.git
 cd projet-marvel-front
 ```
 
-
 Install dependencies:
 ```bash
-npm install
+yarn install
 ```
 
 Start the development server:
 ```bash
-npm start
+yarn dev
 ```
 
 ---

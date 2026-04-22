@@ -1,16 +1,100 @@
-# React + Vite
+# Front-end Marvel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
+- About The Project  
+- Built With  
+- Getting Started  
+- Usage  
+- Roadmap  
+- Contact
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## About The Project
 
-## React Compiler
+This project is a frontend application based on the Marvel universe, developed as part of Le Reacteur bootcamp.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+It allows users to browse Marvel characters, explore their associated comics, and interact with a dynamic interface connected to a backend API.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Main features:
+
+- Browse Marvel characters and comics  
+- Search characters and comics  
+- Favorites system with localStorage persistence  
+- Dedicated favorites page  
+- Navigation with React Router  
+
+This project helped me understand how to work with external APIs, manage dynamic data, and build a structured multi-page React application.
+
+---
+
+## Built With
+
+- React  
+- React Router  
+- Axios  
+- CSS
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have Node.js installed.
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Eva-caruana/Projet-marvel-front.git
+cd projet-marvel-front
+```
+
+Install dependencies:
+```bash
+yarn install
+```
+
+Start the development server:
+```bash
+yarn dev
+```
+
+---
+
+## Usage
+
+### Features
+
+- Browse Marvel characters  
+- Search characters by name  
+- Search comics by title  
+- View character details  
+- Display comics related to a character  
+- Add and remove favorites  
+- Favorites persist using localStorage  
+- Dedicated favorites page  
+- Navigate between pages
+- Pagination
+
+---
+
+## Roadmap
+- Add comics details page
+- Fix comics image issues
+- Scroll to top when changing pages
+- Add authentication features 
+- Improve CSS
+- Make it responsive
+
+---
+
+## Contact
+
+Eva Caruana  
+
+GitHub: https://github.com/Eva-caruana  
+Project: https://github.com/Eva-caruana/Projet-marvel-front.git

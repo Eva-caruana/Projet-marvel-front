@@ -1,5 +1,6 @@
 import "./Card.css";
 import Modal from "../Modal/Modal";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import { useState } from "react";
 import { IoHeart } from "react-icons/io5";
 
@@ -16,18 +17,10 @@ const ComicCard = ({ comic, favoriteComics, toggleFavoriteComic }) => {
             alt={comic.title}
           />
           {/* bouton favoris */}
-          <div className="favorites-heart">
-            <IoHeart
-              className={isFavorite ? "heart-icon-active" : "heart-icon"}
-              onClick={(event) => {
-                event.preventDefault();
-                //Eviter de rediriger la page qd on clique sur le coeur a cause du link
-                event.stopPropagation();
-                //ajoute ou retire des favoris
-                toggleFavoriteComic(comic);
-              }}
-            />
-          </div>
+          <FavoriteButton
+            isFavorite={isFavorite}
+            onClick={() => toggleFavoriteComic(comic)}
+          />
         </div>
         <div className="card-info">
           <h3>{comic.title.slice(0, 30) + "..."}</h3>
@@ -45,7 +38,7 @@ const ComicCard = ({ comic, favoriteComics, toggleFavoriteComic }) => {
                   setShowModal(true);
                 }}
               >
-                Voir plus
+                Lire la suite
               </button>
             </>
           )}

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { IoHeart } from "react-icons/io5";
 import Modal from "../Modal/Modal";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 const CharacterCard = ({
   character,
@@ -25,16 +26,10 @@ const CharacterCard = ({
               src={`${character.thumbnail.path}/portrait_fantastic.${character.thumbnail.extension}`}
               alt={character.name}
             />
-            <div className="favorites-heart">
-              <IoHeart
-                className={isFavorite ? "heart-icon-active" : "heart-icon"}
-                onClick={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  toggleFavoriteCharacter(character);
-                }}
-              />
-            </div>
+            <FavoriteButton
+              isFavorite={isFavorite}
+              onClick={() => toggleFavoriteCharacter(character)}
+            />
           </div>
           <div className="card-info">
             <h3>{character.name}</h3>
@@ -52,7 +47,7 @@ const CharacterCard = ({
                     setShowModal(true);
                   }}
                 >
-                  Voir plus
+                  Lire la suite
                 </button>
               </>
             )}

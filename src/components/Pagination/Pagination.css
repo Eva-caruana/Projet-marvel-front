@@ -1,0 +1,69 @@
+/* -------------------------pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 60px 0;
+  color: white;
+}
+
+/* Boutons Précédent / Suivant */
+.pagination-btn {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #e62429;
+  border-color: #e62429;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Numéros de pages */
+.pagination-numbers {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pagination-number {
+  background: none;
+  border: 1px solid transparent;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.pagination-number:hover {
+  border-color: white;
+}
+
+.pagination-number.active {
+  background-color: #e62429;
+  border-color: #e62429;
+  font-weight: bold;
+}
+
+/* Points de suspension */
+.pagination-dots {
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}

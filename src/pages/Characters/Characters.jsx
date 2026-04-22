@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "../../components/Card/CharacterCard";
+import Pagination from "../../components/Pagination/Pagination";
 import Modal from "../../components/Modal/Modal";
 import { IoHeart } from "react-icons/io5";
 
@@ -83,34 +84,13 @@ const Characters = ({
             }
           })}
         </section>
-        <div className="pagination">
-          <div className="prev-button">
-            <button
-              onClick={() => {
-                setPage(page - 1);
-              }}
-              disabled={page === 1}
-            >
-              Precedent
-            </button>
-          </div>
-          <div>
-            <span>
-              {/* page sur le nombre total de pages arrondi au dessus */}
-              {page} sur {Math.ceil(data.count / 100)}
-            </span>
-          </div>
-          <div className="next-button">
-            <button
-              onClick={() => {
-                setPage(page + 1);
-              }}
-              disabled={page === Math.ceil(data.count / 100)}
-            >
-              Suivant
-            </button>
-          </div>
-        </div>
+
+        <Pagination
+          data={data}
+          count={data.count}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </main>
   );

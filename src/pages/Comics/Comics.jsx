@@ -5,6 +5,7 @@ import { IoHeart } from "react-icons/io5";
 
 import ComicCard from "../../components/Card/ComicCard";
 import Modal from "../../components/Modal/Modal";
+import Pagination from "../../components/Pagination/Pagination";
 
 const Comics = ({ title, favoriteComics, toggleFavoriteComic }) => {
   //on declare des states
@@ -47,7 +48,6 @@ const Comics = ({ title, favoriteComics, toggleFavoriteComic }) => {
             //verifier si le comic est deja en favori pour gerer l'affichage
             const isFavorite = favoriteComics.find(
               (item) => item._id === comic._id,
-              // console.log(comic),
             );
             return (
               <ComicCard
@@ -69,33 +69,12 @@ const Comics = ({ title, favoriteComics, toggleFavoriteComic }) => {
           })}
         </section>
 
-        <div className="pagination">
-          <div className="prev-button">
-            <button
-              onClick={() => {
-                setPage(page - 1);
-              }}
-              disabled={page === 1}
-            >
-              Precedent
-            </button>
-          </div>
-          <div>
-            <span>
-              {page} sur {Math.ceil(data.count / 100)}
-            </span>
-          </div>
-          <div className="next-button">
-            <button
-              onClick={() => {
-                setPage(page + 1);
-              }}
-              disabled={page === Math.ceil(data.count / 100)}
-            >
-              Suivant
-            </button>
-          </div>
-        </div>
+        <Pagination
+          data={data}
+          count={data.count}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </main>
   );

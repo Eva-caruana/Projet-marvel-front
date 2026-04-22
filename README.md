@@ -1,11 +1,12 @@
 # Front-end Marvel
 
 ## Table of Contents
-- About The Project  
-- Built With  
-- Getting Started  
-- Usage  
-- Roadmap  
+
+- About The Project
+- Built With
+- Getting Started
+- Usage
+- Roadmap
 - Contact
 
 ---
@@ -16,14 +17,13 @@ This project is a frontend application based on the Marvel universe, developed a
 
 It allows users to browse Marvel characters, explore their associated comics, and interact with a dynamic interface connected to a backend API.
 
-
 Main features:
 
-- Browse Marvel characters and comics  
-- Search characters and comics  
-- Favorites system with localStorage persistence  
-- Dedicated favorites page  
-- Navigation with React Router  
+- Browse Marvel characters and comics
+- Search characters and comics
+- Favorites system with localStorage persistence
+- Dedicated favorites page
+- Navigation with React Router
 
 This project helped me understand how to work with external APIs, manage dynamic data, and build a structured multi-page React application.
 
@@ -31,9 +31,9 @@ This project helped me understand how to work with external APIs, manage dynamic
 
 ## Built With
 
-- React  
-- React Router  
-- Axios  
+- React
+- React Router
+- Axios
 - CSS
 
 ---
@@ -54,11 +54,13 @@ cd projet-marvel-front
 ```
 
 Install dependencies:
+
 ```bash
 yarn install
 ```
 
 Start the development server:
+
 ```bash
 yarn dev
 ```
@@ -69,32 +71,32 @@ yarn dev
 
 ### Features
 
-- Browse Marvel characters  
-- Search characters by name  
-- Search comics by title  
-- View character details  
-- Display comics related to a character  
-- Add and remove favorites  
-- Favorites persist using localStorage  
-- Dedicated favorites page  
+- Browse Marvel characters and comics
+- Search characters by name
+- Search comics by title
+- View character and comics details
+- Display comics related to a character
+- Add and remove favorites
+- Favorites persist using localStorage
+- Dedicated favorites page
 - Navigate between pages
 - Pagination
 
 ---
 
 ## Roadmap
-- Add comics details page
+
 - Fix comics image issues
-- Scroll to top when changing pages
-- Add authentication features 
+- Add authentication features
 - Improve CSS
 - Make it responsive
+- Add auto compression search
 
 ---
 
 ## Contact
 
-Eva Caruana  
+Eva Caruana
 
 GitHub: https://github.com/Eva-caruana  
 Project: https://github.com/Eva-caruana/Projet-marvel-front.git

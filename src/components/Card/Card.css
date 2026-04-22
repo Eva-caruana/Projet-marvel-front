@@ -13,6 +13,7 @@
   flex-shrink: 0;
   transition: all 0.3s ease;
   cursor: pointer;
+  background-color: black;
 }
 /* -----------------------------------------card effect */
 .card-article {
@@ -79,11 +80,11 @@
   color: white;
   border-radius: 5px;
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
   transition: all 0.2s;
   font-family: "Bangers", cursive;
-  text-align: flex-end;
+  letter-spacing: 3px;
 }
 
 .card-see-moore-btn:hover {

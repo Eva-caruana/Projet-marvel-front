@@ -1,0 +1,28 @@
+/* faorites btn------------------- */
+
+.picture-heart-btn {
+  position: relative;
+}
+.favorites-heart {
+  background-color: black;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  cursor: pointer;
+  z-index: 2;
+  position: absolute;
+}
+.heart-icon {
+  color: white;
+}
+
+.heart-icon-active {
+  color: #e62429;
+}

@@ -5,6 +5,8 @@ header {
   width: 100%;
   background-color: black;
   z-index: 1000;
+  padding: 0 30px; /* ← ajoute ça */
+  box-sizing: border-box; /* ← important pour que le padding ne déborde pas */
 }
 
 .header-sections {
@@ -15,10 +17,11 @@ header {
   border-bottom: #e62429 0.5px solid;
   height: 100px;
   background-color: black;
+  position: relative;
 }
 /* LEFT SIDE  */
 header img {
-  width: 150px;
+  width: 140px;
 }
 
 .left-side-header {
@@ -50,10 +53,26 @@ header .menu a {
   gap: 30px;
 }
 
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 0.5px solid lightgray;
+  padding-bottom: 2px;
+}
+
+/* Tu retires le border-bottom de l'input car il est maintenant sur le wrapper */
 .search-input {
   background-color: black;
   border: none;
-  border-bottom: 0.5px solid lightgray;
+  color: white;
+  outline: none;
+  width: 100px;
+}
+.search-input {
+  background-color: black;
+  border: none;
+
   color: white;
   outline: none;
   width: 100px;
@@ -67,4 +86,93 @@ header .menu a {
 .favorite-icon-header {
   color: white;
   font-size: 20px;
+}
+
+/* =================== RESPONSIVE ===================== */
+
+/* Tablette (max 1024px) */
+@media (max-width: 1024px) {
+  .left-side-header {
+    gap: 30px;
+  }
+
+  header .menu {
+    gap: 30px;
+    font-size: 20px;
+  }
+}
+
+/* Tablette (max 768px) */
+@media (max-width: 768px) {
+  .header-sections {
+    height: auto;
+    padding: 15px 0;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  header img {
+    width: 100px;
+  }
+
+  .left-side-header {
+    gap: 20px;
+  }
+
+  header .menu {
+    gap: 20px;
+    font-size: 16px;
+  }
+
+  /* Plus de position absolute — le search reste dans le flux normal */
+  .search-section {
+    position: static;
+    width: 100%;
+    padding: 10px 0;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .search-wrapper {
+    justify-content: flex-end;
+  }
+
+  .search-input {
+    width: 150px;
+  }
+}
+
+/* Mobile (max 480px) */
+@media (max-width: 480px) {
+  .header-sections {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .left-side-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  header img {
+    width: 80px;
+  }
+
+  header .menu {
+    gap: 15px;
+    font-size: 14px;
+  }
+
+  .right-side-header {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-input {
+    width: 120px;
+  }
 }

@@ -34,33 +34,37 @@ const Header = ({ name, setName, title, setTitle }) => {
 
             <div className="search-section">
               {location.pathname === "/characters" && (
-                <div>
-                  <input
-                    className="search-input"
-                    type="text"
-                    name="text"
-                    value={name}
-                    onChange={(event) => {
-                      setName(event.target.value);
-                    }}
-                  />
-                  <FaMagnifyingGlass className="search-icon" />
+                <div className="search-wrapper">
+                  <div>
+                    <input
+                      className="search-input"
+                      type="text"
+                      name="text"
+                      value={name}
+                      onChange={(event) => {
+                        setName(event.target.value);
+                      }}
+                    />
+                    <FaMagnifyingGlass className="search-icon" />
+                  </div>
                 </div>
               )}
               {/* Si la barre de recherche est sur la page comics on l'affiche  */}
               {location.pathname === "/comics" && (
-                <div>
-                  <input
-                    className="search-input"
-                    type="text"
-                    name="text"
-                    value={title}
-                    onChange={(event) => {
-                      setTitle(event.target.value);
-                    }}
-                  />
+                <div className="search-wrapper">
+                  <div>
+                    <input
+                      className="search-input"
+                      type="text"
+                      name="text"
+                      value={title}
+                      onChange={(event) => {
+                        setTitle(event.target.value);
+                      }}
+                    />
 
-                  <FaMagnifyingGlass className="search-icon" />
+                    <FaMagnifyingGlass className="search-icon" />
+                  </div>
                 </div>
               )}
             </div>

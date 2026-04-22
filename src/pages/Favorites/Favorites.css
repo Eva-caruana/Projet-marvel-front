@@ -45,3 +45,43 @@
   flex-direction: column;
   padding: 30px 0;
 }
+
+/* =================== RESPONSIVE ===================== */
+
+/* Tablette (max 1024px) */
+@media (max-width: 1024px) {
+  .favorites-bloc {
+    min-width: 900px;
+    gap: 20px;
+  }
+}
+
+/* Tablette (max 768px) */
+@media (max-width: 768px) {
+  .favorites-bloc {
+    min-width: 600px;
+    gap: 15px;
+    padding: 20px 10px;
+  }
+
+  .favorites-page h2 {
+    font-size: 20px;
+  }
+}
+
+/* Mobile (max 480px) */
+@media (max-width: 480px) {
+  .favorites-bloc {
+    min-width: 400px;
+    gap: 10px;
+    padding: 15px 10px;
+  }
+
+  .favorites-page h2 {
+    font-size: 18px;
+  }
+
+  .empty-favorites-page p {
+    font-size: 14px;
+  }
+}

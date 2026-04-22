@@ -3,3 +3,20 @@
   flex-wrap: wrap;
   gap: 30px;
 }
+
+/* =================== RESPONSIVE ===================== */
+
+/* Tablette (max 768px) */
+@media (max-width: 768px) {
+  .comics-page section {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+/* Mobile (max 480px) */
+@media (max-width: 480px) {
+  .comics-page section {
+    gap: 15px;
+  }
+}

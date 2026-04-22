@@ -86,11 +86,12 @@ yarn dev
 
 ## Roadmap
 
-- Fix comics image issues
 - Add authentication features
-- Improve CSS
-- Make it responsive
-- Add auto compression search
+- Persist favorites for authenticated users (database instead of localStorage)
+- Add detailed pages for characters and comics (beyond modal)
+- Refactor and standardize reusable components (cards, buttons, layout)
+- Handle missing images and empty descriptions more gracefully
+- Improve search to support abbreviations and partial matches
 
 ---
 

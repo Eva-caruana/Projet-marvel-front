@@ -30,7 +30,7 @@ header img {
 header .menu {
   display: flex;
   align-items: flex-end;
-  font-size: 17px;
+  font-size: 25px;
   gap: 70px;
 }
 

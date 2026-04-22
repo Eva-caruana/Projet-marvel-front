@@ -1,7 +1,13 @@
 import "./Favorites.css";
+
 import { IoHeart } from "react-icons/io5";
+import Modal from "../../components/Modal/Modal";
+import CharacterCard from "../../components/Card/CharacterCard";
+import ComicCard from "../../components/Card/ComicCard";
 
 const Favorites = ({
+  comic,
+  character,
   favoriteCharacters,
   favoriteComics,
   toggleFavoriteComic,
@@ -25,7 +31,7 @@ const Favorites = ({
         <div>
           <h1>Mes favoris</h1>
         </div>
-
+        {/* CHARACTERS */}
         {/* Si pas de personnage favori ne paas afficher la section*/}
         {favoriteCharacters.length > 0 && (
           <section className="favorites-characters-section">
@@ -41,42 +47,29 @@ const Favorites = ({
                   // console.log(comic),
                 );
                 return (
-                  <article className="character-article" key={character._id}>
-                    <div className="picture-heart-btn">
-                      <img
-                        className="character-img"
-                        src={`${character.thumbnail.path}/portrait_xlarge.${character.thumbnail.extension}`}
-                        alt={character.name}
-                      />
-                      {/* bouton favoris */}
-                      <div className="favorites-heart">
-                        <IoHeart
-                          className={
-                            isFavorite ? "heart-icon-active" : "heart-icon"
-                          }
-                          onClick={(event) => {
-                            event.preventDefault();
-                            //Eviter de rediriger la page qd on clique sur le coeur a cause du link
-                            event.stopPropagation();
-                            //ajoute ou retire un comic des favoris
-                            toggleFavoriteCharacter(character);
-                            console.log("ajout favori");
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <h3>{character.name}</h3>
-                    {character.description && (
-                      <p className="favorites-description">
-                        {character.description.slice(0, 80)}
-                      </p>
-                    )}
-                  </article>
+                  <CharacterCard
+                    key={character._id}
+                    character={character}
+                    favoriteCharacters={favoriteCharacters}
+                    toggleFavoriteCharacter={toggleFavoriteCharacter}
+                  />
                 );
+
+                {
+                  showModal && (
+                    <Modal
+                      className="modal"
+                      character={character}
+                      onClose={() => setShowModal(false)}
+                    />
+                  );
+                }
               })}
             </div>
           </section>
         )}
+
+        {/* COMICS */}
         {favoriteComics.length > 0 && (
           <section className="favorites-comics-section">
             <h2>Comics </h2>
@@ -89,38 +82,22 @@ const Favorites = ({
                   // console.log(comic),
                 );
                 return (
-                  <article className="comic-article" key={comic._id}>
-                    <div className="picture-heart-btn">
-                      <img
-                        className="comic-img"
-                        src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
-                        alt={comic.title}
-                      />
-                      {/* bouton favoris */}
-                      <div className="favorites-heart">
-                        <IoHeart
-                          className={
-                            isFavorite ? "heart-icon-active" : "heart-icon"
-                          }
-                          onClick={(event) => {
-                            event.preventDefault();
-                            //Eviter de rediriger la page qd on clique sur le coeur a cause du link
-                            event.stopPropagation();
-                            //ajoute ou retire un comic des favoris
-                            toggleFavoriteComic(comic);
-                            console.log("ajout favori");
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <h3>{comic.title}</h3>
-                    {comic.description && (
-                      <p className="favorites-description">
-                        {comic.description.slice(0, 80)}
-                      </p>
-                    )}
-                  </article>
+                  <ComicCard
+                    key={comic._id}
+                    comic={comic}
+                    favoriteComics={favoriteComics}
+                    toggleFavoriteComic={toggleFavoriteComic}
+                  />
                 );
+                {
+                  showModal && (
+                    <Modal
+                      className="modal"
+                      comic={comic}
+                      onClose={() => setShowModal(false)}
+                    />
+                  );
+                }
               })}
             </div>
           </section>

@@ -1,56 +1,7 @@
 /* Page globals------------------- */
-h1 {
-  font-weight: bold;
-  color: #e62429;
-  font-size: 24px;
-  margin: 30px 0;
-}
-
-h2 {
-  font-weight: bold;
-  color: #e62429;
-  font-size: 16px;
-
-  margin-top: 10px;
-}
 
 .characters-page section {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
-}
-
-/* articles------------------- */
-.character-article {
-  border: 0.5px #ffffff solid;
-  width: 250px;
-  height: 400px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 20px;
-  padding: 20px;
-  flex-shrink: 0;
-}
-.character-img {
-  height: 250px;
-  width: 180px;
-  object-fit: contain;
-  border-radius: 5px;
-}
-
-.character-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  flex: 1;
-  width: 100%;
-
-  .characters-description {
-    color: white;
-    text-align: justify;
-  }
 }

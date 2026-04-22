@@ -2,7 +2,10 @@ import "./Comics.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { IoHeart } from "react-icons/io5";
-// import img from "../../assets/img/img-notfound.jpg";
+
+import ComicCard from "../../components/Card/ComicCard";
+import Modal from "../../components/Modal/Modal";
+
 const Comics = ({ title, favoriteComics, toggleFavoriteComic }) => {
   //on declare des states
   const [data, setData] = useState(null);
@@ -47,44 +50,25 @@ const Comics = ({ title, favoriteComics, toggleFavoriteComic }) => {
               // console.log(comic),
             );
             return (
-              <article className="comic-article" key={comic._id}>
-                <div className="picture-heart-btn">
-                  <img
-                    className="comic-img"
-                    src={`${comic.thumbnail.path}/portrait_xlarge.${comic.thumbnail.extension}`}
-                    alt={comic.title}
-                  />
-
-                  {/* bouton favoris */}
-                  <div className="favorites-heart">
-                    <IoHeart
-                      className={
-                        isFavorite ? "heart-icon-active" : "heart-icon"
-                      }
-                      onClick={(event) => {
-                        event.preventDefault();
-                        //Eviter de rediriger la page qd on clique sur le coeur a cause du link
-                        event.stopPropagation();
-                        //ajoute ou retire un comic des favoris
-                        toggleFavoriteComic(comic);
-                        console.log("ajout favori");
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className="comic-info">
-                  <h2> {comic.title.slice(0, 20) + "..."}</h2>
-                  {/*gerer erreur description*/}
-                  {comic.description && (
-                    <p className="comics-description">
-                      {comic.description.slice(0, 80) + "..."}
-                    </p>
-                  )}
-                </div>
-              </article>
+              <ComicCard
+                key={comic._id}
+                comic={comic}
+                favoriteComics={favoriteComics}
+                toggleFavoriteComic={toggleFavoriteComic}
+              />
             );
+            {
+              showModal && (
+                <Modal
+                  className="modal"
+                  comic={comic}
+                  onClose={() => setShowModal(false)}
+                />
+              );
+            }
           })}
         </section>
+
         <div className="pagination">
           <div className="prev-button">
             <button

@@ -2,7 +2,8 @@ import "./Characters.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import CharacterCard from "../../components/Card/CharacterCard";
+import Modal from "../../components/Modal/Modal";
 import { IoHeart } from "react-icons/io5";
 
 const Characters = ({
@@ -60,50 +61,26 @@ const Characters = ({
             );
 
             return (
-              //   console.log("ici le log =>>>", data.results);
               //on redirige la page au clics sur les comics du personnage
 
-              <Link
-                className="character-link"
-                to={`/comics/${character._id}`}
+              <CharacterCard
                 key={character._id}
-              >
-                <article className="character-article">
-                  <div className="picture-heart-btn">
-                    <img
-                      className="character-img"
-                      src={`${character.thumbnail.path}/portrait_fantastic.${character.thumbnail.extension}`}
-                      alt={character.name}
-                    />
-                    <div className="favorites-heart">
-                      <IoHeart
-                        className={
-                          isFavorite ? "heart-icon-active" : "heart-icon"
-                        }
-                        onClick={(event) => {
-                          event.preventDefault();
-                          //Eviter de rediriger la page qd on clique sur le coeur a cause du link
-                          event.stopPropagation();
-                          //ajoute ou retire un personnage des favoris
-                          toggleFavoriteCharacter(character);
-                          console.log("ajout favori");
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="character-info">
-                    <div className="name">
-                      <h2>{character.name}</h2>
-                    </div>
-                    <div className="characters-description">
-                      {character.description && (
-                        <p>{character.description.slice(0, 100) + "..."}</p>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              </Link>
+                character={character}
+                favoriteCharacters={favoriteCharacters}
+                toggleFavoriteCharacter={toggleFavoriteCharacter}
+              />
             );
+
+            //Modal zoom sur personnage
+            {
+              showModal && (
+                <Modal
+                  className="modal"
+                  character={character}
+                  onClose={() => setShowModal(false)}
+                />
+              );
+            }
           })}
         </section>
         <div className="pagination">

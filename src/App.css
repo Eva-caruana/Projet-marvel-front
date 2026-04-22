@@ -1,17 +1,21 @@
 /* Importation de police*/
-@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"); */
+
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* GLOBALS------------------- */
 
 .loading {
   color: white;
 }
+
 body {
-  font-family: "Raleway";
+  font-family: "Bangers", cursive;
   font-weight: light;
   background-color: #000000;
   font-size: 12px;
   padding-top: 100px;
+  letter-spacing: 2px;
 }
 
 .container {
@@ -20,19 +24,19 @@ body {
 }
 
 /* titles------------------- */
+
 h1 {
   font-weight: bold;
-  color: #e62429;
-  font-size: 24px;
-  padding-top: 40px;
-  padding-bottom: 20px;
+  color: white;
+  font-size: 50px;
+  padding: 40px 0;
 }
 
 h2 {
   font-weight: bold;
-  color: white;
-  font-size: 16px;
-  padding-bottom: 10px;
+  color: #e62429;
+  font-size: 30px;
+  margin: 20px 0;
 }
 
 h3 {
@@ -40,6 +44,7 @@ h3 {
   color: #e62429;
   font-weight: bold;
   font-size: 16px;
+  margin: 10px 0;
 }
 
 /* blocs------------------- */

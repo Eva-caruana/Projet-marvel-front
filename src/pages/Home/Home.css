@@ -1,37 +1,82 @@
 .home-section {
+  height: 100vh;
+  width: 100%;
+}
+
+.home-hero {
   position: relative;
-  overflow: hidden;
-  perspective: 1200px;
-  margin: 0;
+  height: 100%;
+  width: 100%;
+
+  text-align: left;
 }
 
 .home-img {
   width: 100%;
-  display: block;
-  height: 700px;
+  height: 100%;
   object-fit: cover;
-  height: 100vh; /* prend toute la hauteur écran */
 }
 
-/* dégradé sur les bords + bas */
-.home-section::after {
-  content: "";
+.home-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* C'est un dégradé assombrit l'image pour que le texte soit lisible dessus. */
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 60%,
-    /* haut normal */ rgba(0, 0, 0, 0.8) 100% /* bas fondu */
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0) 100%
   );
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 60px;
 }
 
-.home-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-  background:
-    linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 1)),
-    linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent 30%),
-    linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent 30%);
+  text-align: left;
+  margin-top: 15%;
+}
+
+.home-title {
+  font-size: 50px;
+  color: #e62429;
+  letter-spacing: 5px;
+}
+
+.home-subtitle {
+  font-size: 20px;
+  color: white;
+  max-width: 500px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 35px;
+    letter-spacing: 3px;
+  }
+
+  .home-subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-title {
+    font-size: 25px;
+    letter-spacing: 2px;
+  }
+
+  .home-subtitle {
+    font-size: 14px;
+    padding: 0 20px;
+  }
 }
